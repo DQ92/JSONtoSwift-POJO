@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c473d0d0-cc29-4fe7-8fa4-393301d5ff7a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="JSON to Swift POJO.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -421,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487285733495</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fix.">
+      <created>1487285812512</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1487285812512</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
