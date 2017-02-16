@@ -1,61 +1,59 @@
-<!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
 <title>JSON to Swift POJO</title>
-<style>
-    body {
-        margin: 3%;
-        width: 94%;
-        background: #FDFdFD;
-    }
 
-	textarea {
-        width: 100%;
-		height: 400px;
-		font-family: monospace;
-		display: block;
-		margin-bottom: 10px;
-	}
-	
-	div {
-        width: 100%;
-		margin-bottom: 10px;	
-	}
-	
-	button {
-		width: 100%;
-		height: 45px;
-		margin-bottom: 10px;		
-	}
-</style>
+    <style>
+        body {
+            margin: 13%;
+            width: 94%;
+            background: #FDFdFD;
+        }
 
-<script src="JsonToPojo.js"></script>
+        textarea {
+            width: 100%;
+            height: 400px;
+            font-family: monospace;
+            display: block;
+            margin-bottom: 10px;
+        }
 
-<script>
-	function documentLoaded(evt) {	
-		document.querySelector('button').addEventListener("click", function(event) {
-				var json = document.querySelector('#input').value; 			
-			    var firstClasName = document.querySelector('#className').value;
+        button {
+            position: relative;
+            width: 86%;
+            margin: 0%, 7%;
+            height: 45px;
+            margin-top: 10px;
+        }
 
-				document.querySelector('#output').value = jsonToPojoConverter().convert(json, firstClasName);
-			});
-	}
-</script>
+        #editor, #output {
+            position: relative;
+            width: 86%;
+            margin: 7%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            height: 450px;
+        }
 
+    </style>
+<head>
+<link rel="stylesheet" href="css/bootstrap-themed.css" />
+<link rel="stylesheet" href="css/jojo.css" />
 </head>
+
 <body onload="documentLoaded()">
-<h4>Made by me</h4>
-<hr>
-</br>
+    <h4>Made by me</h4>
+    <hr>
+    </br>
 
-Tu wpisz nazwę klasy (camelem od razu). Tylko nie pomyl się.
-<input id="className"></input>
-</br>
-</br>
-</br>
+        <center>
+            <h3><small>Tu wrzuć JSON, (a to tylko taki przykład).</small></h3>
+            <hr style="width: 30%" />
+        </center>
 
-Tu wrzuć JSON, (a to tylko taki przykład).
-<textarea id="input" style="height:220px">
+        <center>Tu wpisz nazwę klasy (camelem od razu). Tylko nie pomyl się.
+            <input id="className"></input>
+        </center>
+    <br/><br/>
+                <div id="editor">
 {
     "id": 45,
     "cost": 67.32,
@@ -63,28 +61,68 @@ Tu wrzuć JSON, (a to tylko taki przykład).
     "message": "Hello World!",
     "is_available": true,
     "days": ["Mon", "Tue"],
-    "customer": [ 
-        { 
+    "customer": [
+        {
             "name": "Bob",
-            "yearsOfService": 6 
+            "yearsOfService": 6
         },
-		
-        { 
+        {
             "name": "Mary",
             "yearsOfService": 3,
-            "gender": "female" 
-        }					
+            "gender": "female"
+        }
     ],
     "expiration": "2016-05-1",
     "Obj": {
         "fld1": "Bob",
         "fld2": "Mary"
     }
-}		
-</textarea>
-<button style="color: white; background: red;">&#9660;&nbsp;&nbsp;C O N V E R T&nbsp;&nbsp;&#9660;</button>
-<textarea id="output" style="height:320px" ></textarea>
-</br>
+}
+                </div>
+
+
+    <div>
+        <center>
+            <button style="color: white; background: red;">&#9660;&nbsp;&nbsp;C O N V E R T&nbsp;&nbsp;&#9660;</button>
+        </center>
+        <textarea id="output"></textarea>
+    </div>
+
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/ace/1.1.3/min/ace.js"></script>
+    <script src="js/JsonToPojo.js"></script>
+
+    <script>
+        var editor = ace.edit("editor");
+
+        window.onload = function() {
+            editor.setTheme("ace/theme/monokai");
+            editor.getSession().setMode("ace/mode/json");
+            editor.session.setUseWorker(false);
+            editor.focus();
+
+            documentLoaded()
+        };
+
+        function documentLoaded(evt) {
+            document.querySelector('button').addEventListener("click", function(event) {
+                    var json = editor.getValue()
+                    <!--console.log(json)-->
+
+                    <!--document.querySelector('#input').value;-->
+                    var firstClasName = document.querySelector('#className').value;
+
+                    var value = jsonToPojoConverter().convert(json, firstClasName);
+                    document.querySelector('#output').value = value
+                });
+        }
+    </script>
+
 
 </body>
 </html>
+
