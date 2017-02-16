@@ -147,10 +147,10 @@ function jsonToPojoConverter() {
         result += '    func mapping(map: Map) { \n';
         		for (var i = 0; i < fields.length; i++) {
         		    if (fields[i].typeDeclaration == 'NSDate') {
-                        result += '        self.' + fields[i].fieldName + ' <- (map["'+fields[i].originalFieldName+'"], DateAndTime()) \n';
+                        result += '        self.' + fields[i].camelName + ' <- (map["'+fields[i].originalFieldName+'"], DateAndTime()) \n';
                         continue
                     }
-                    result += '        self.' + fields[i].fieldName + ' <- map["'+fields[i].originalFieldName+'"] \n';
+                    result += '        self.' + fields[i].camelName + ' <- map["'+fields[i].originalFieldName+'"] \n';
         		}
         result += '    }     \n';
         result += '}\n\n';
