@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JSON to Swift POJO</title>
+<style>
+	textarea {
+		width: 95%;
+		height: 400px;
+		font-family: monospace;
+		display: block;
+		margin-bottom: 10px;
+	}
+	
+	div {
+		width: 95%;
+		margin-bottom: 10px;	
+	}
+
+	button {
+		width: 95%;
+		height: 45px;
+		margin-bottom: 10px;		
+	}
+</style>
+
+
+<script src="JsonToPojo.js"></script>
+
+
+<script>
+	function documentLoaded(evt) {	
+		document.querySelector('button').addEventListener("click", function(event) {
+				var json = document.querySelector('#input').value; 			
+			    var firstClasName = document.querySelector('#className').value;
+
+				document.querySelector('#output').value = jsonToPojoConverter().convert(json, firstClasName);
+						
+			});
+	}
+</script>
+
+</head>
+<body onload="documentLoaded()">
+<h4>Made by me</h4>
+<hr>
+</br>
+
+Tu wpisz nazwę klasy (camelem od razu). Tylko nie pomyl się.
+<input id="className"></input>
+</br>
+</br>
+</br>
+
+Tu wrzuć JSON, (a to tylko taki przykład).
+<textarea id="input" style="height:220px">
+{
+    "id": 45,
+    "cost": 67.32,
+    "date": "2017-2-2",
+    "message": "Hello World!",
+    "is_available": true,
+    "days": ["Mon", "Tue"],
+    "customer": [ 
+        { 
+            "name": "Bob",
+            "yearsOfService": 6 
+        },
+		
+        { 
+            "name": "Mary",
+            "yearsOfService": 3,
+            "gender": "female" 
+        }					
+    ],
+    "expiration": "2016-05-1",
+    "Obj": {
+        "fld1": "Bob",
+        "fld2": "Mary"
+    }
+}		
+</textarea>
+<button style="color: white; background: red;">&#9660;&nbsp;&nbsp;C O N V E R T&nbsp;&nbsp;&#9660;</button>
+<textarea id="output" style="height:320px" ></textarea>
+</br>
+
+</body>
+</html>
